@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   title: "MD Harun Al Roshid Mollah | Portfolio",
@@ -31,12 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-dark text-light">
-        <Navbar />
-        <main className="relative overflow-hidden">
+      <body className="bg-light text-dark dark:bg-dark dark:text-light transition-colors duration-300">
+        <ClientLayout>
           {children}
-        </main>
-        <Footer />
+        </ClientLayout>
       </body>
     </html>
   );
