@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
@@ -51,12 +52,34 @@ const Hero = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-4xl mx-auto text-center z-10"
+        className="max-w-7xl mx-auto z-10 flex items-start justify-start gap-8 lg:gap-16 pt-8"
       >
+        {/* Profile Photo - Left Center (moved up) */}
+        <motion.div
+          variants={itemVariants}
+          className="hidden lg:flex flex-shrink-0 mt-20"
+        >
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="relative w-48 h-64 rounded-lg overflow-hidden border-3 border-primary/50 shadow-lg hover:border-primary transition-colors"
+          >
+            <Image
+              src="/profile.jpg"
+              alt="MD Harun Al Roshid Mollah"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Text Content - Right Side */}
+        <div className="text-center lg:text-left flex-1">
         {/* Badge */}
         <motion.div
           variants={itemVariants}
-          className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full"
+          className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full lg:mx-0 mx-auto"
         >
           <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
           <span className="text-sm text-primary">Welcome to my portfolio</span>
@@ -65,7 +88,7 @@ const Hero = () => {
         {/* Main Heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+          className="text-5xl md:text-6xl font-bold mb-6 leading-tight lg:text-left text-center"
         >
           Hi, I'm{' '}
           <span className="gradient-text">MD Harun Al Roshid Mollah</span>
@@ -74,7 +97,7 @@ const Hero = () => {
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-light/80 mb-8 max-w-2xl lg:mx-0 mx-auto leading-relaxed"
         >
           CSE Diploma Student at Central Institute of Technology, Kokrajhar
           <br />
@@ -84,7 +107,7 @@ const Hero = () => {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-lg text-light/60 mb-12 max-w-2xl mx-auto"
+          className="text-lg text-light/60 mb-12 max-w-2xl lg:mx-0 mx-auto"
         >
           Passionate about building elegant, scalable solutions. Part of{' '}
           <a
@@ -102,7 +125,7 @@ const Hero = () => {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          className="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center mb-12"
         >
           <motion.a
             href="#projects"
@@ -127,13 +150,14 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex justify-center"
+          className="flex lg:justify-start justify-center"
         >
           <ChevronDown size={32} className="text-primary animate-bounce" />
         </motion.div>
+        </div>
       </motion.div>
 
-      {/* Floating Cards */}
+      {/* Floating Card - Bottom Left */}
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity }}
@@ -141,11 +165,15 @@ const Hero = () => {
       >
         <div className="glass-effect p-4 rounded-lg max-w-xs">
           <p className="text-sm text-light/80">
-            📍 From Asssam, India | 🎓 Batch 2025-2028
+            📍 From Assam, India
+          </p>
+          <p className="text-xs text-light/60">
+            🎓 Batch 2025-2028
           </p>
         </div>
       </motion.div>
 
+      {/* Floating Card - Top Right */}
       <motion.div
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 5, repeat: Infinity }}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
@@ -27,9 +28,18 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-2xl font-bold gradient-text cursor-pointer"
+          className="flex items-center gap-3 cursor-pointer"
         >
-          H.
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/50 hover:border-primary transition-colors">
+            <Image
+              src="/profile.jpg"
+              alt="Profile Photo"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <span className="text-2xl font-bold gradient-text">H.</span>
         </motion.div>
 
         <div className="hidden md:flex gap-8">
